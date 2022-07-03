@@ -24,6 +24,7 @@ config :krumpin_n_da_kitchen, KrumpinNDaKitchenWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "yxWjKCe/0FzGzT/h3/lgU4G2uu5TrYwtqFadzUit9LJ7Cv/mfiTrLhnydlJgHCc4",
   watchers: [
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]},
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
   ]
