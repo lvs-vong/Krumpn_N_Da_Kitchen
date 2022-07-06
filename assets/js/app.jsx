@@ -46,7 +46,11 @@ window.liveSocket = liveSocket
 //React stuff
 import React from "react";
 import ReactDOM from "react-dom/client";
-import AppContainer from "./components/appContainer"
-
+import AppContainer from "./components/AppContainer"
+import { ContextProvider } from "./context/ContextProvider"
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render( <AppContainer />);
+root.render(
+    <ContextProvider>
+        <AppContainer />
+    </ContextProvider>
+);
