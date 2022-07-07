@@ -1,38 +1,7 @@
 import React from 'react';
 import { useStateContext } from '../context/ContextProvider';
-import { FaBeer } from 'react-icons/fa';
-import { TbMeat } from 'react-icons/tb';
-import { MdOutlineHouse, MdOutlineCancel } from 'react-icons/md';
-const links = [
-    {
-        title: 'Dashboard',
-        links: [
-            {
-                name: 'Home',
-                icon: <MdOutlineHouse />,
-            },
-        ],
-    },
-    {
-        title: 'Foods',
-        links: [
-            {
-                name: 'Meat',
-                icon: <TbMeat />,
-            },
-        ],
-    },
-    {
-        title: 'Drinks',
-        links: [
-            {
-                name: 'Beer',
-                icon: <FaBeer />,
-            },
-        ],
-    },
-]
-
+import {  MdOutlineCancel } from 'react-icons/md';
+import { links } from '../context/Links';
 const Sidebar  = () => {
     const { sideMenu, setSideMenu } = useStateContext();
     const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-black text-md m-2';
