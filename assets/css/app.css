@@ -9,3 +9,8 @@
   --secondary-color: #ADAD89;
   --tertiary-color: #68EDCB;
 }
+
+@font-face {
+  font-family: 'OSA';
+  src: url('/fonts/Old\ School\ Adventures-847a.woff');
+}

@@ -11,6 +11,9 @@ module.exports = {
       fontSize: {
         14: '14px',
       },
+      fontFamily: {
+        osa: ['OSA'],
+      },
       colors: {
         'main': '#77DD77',
         'secondary': '#ADAD89',
