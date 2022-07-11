@@ -14,14 +14,14 @@ const Sidebar  = () => {
                         md:overflow-hidden overflow-auto 
                         md:hover:overflow-auto pb-10'>
             <div className='flex'>
-                <h1 className='border-b-4 border-slate-900 text-2xl p-3'>Krumpn N Da Kitchen {sideMenu}</h1>
+                <h1 className='border-b-4 border-slate-900 text-xl p-3 font-osa'>Krumpn N Da Kitchen {sideMenu}</h1>
                 <button type='button' 
                         className='absolute right-1 rounded-full p-2 hover:bg-tertiary text-xl'
                         onClick={closeSideBar}><MdOutlineCancel /></button>
             </div>
             {links.map((item) => (
                 <div key={item.title}>
-                    <p className='text-gray-800 m-3 mt-4 uppercase'>
+                    <p className='text-gray-800 m-3 mt-4 uppercase font-osa'>
                         {item.title}
                     </p>
                     {item.links.map((link) => (
