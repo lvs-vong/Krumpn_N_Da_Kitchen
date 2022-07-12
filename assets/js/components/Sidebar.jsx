@@ -4,28 +4,30 @@ import {  MdOutlineCancel } from 'react-icons/md';
 import { links } from '../context/Links';
 const Sidebar  = () => {
     const { sideMenu, setSideMenu } = useStateContext();
-    const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-black text-md m-2';
-    const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-gray-700 text-md hover:bg-tertiary cursor-pointer font-eightbit';
+    const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md hover:border-double hover:border-4 hover:border-quaternary cursor-pointer font-eightbit';
+    const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 text-md border-l-4 border-tertiary font-eightbit';
     const closeSideBar = () => {
         setSideMenu(false);
     }
+    console.log(window.location.origin + "/home");
+    console.log(window.location.href);
     return (
-        <div className='h-screen shadow-xl px-2
+        <div className='h-screen shadow-xl px-2 cursor-default
                         md:overflow-hidden overflow-auto 
-                        md:hover:overflow-auto pb-10'>
+                        md:hover:overflow-auto pb-10 text-tertiary'>
             <div className='flex'>
-                <h1 className='border-b-4 border-slate-900 text-xl p-3 font-osa'>Krumpn N Da Kitchen {sideMenu}</h1>
+                <h1 className='border-b-4 border-tertiary text-xl p-3 font-osa'>Krumpn N Da Kitchen {sideMenu}</h1>
                 <button type='button' 
-                        className='absolute right-1 rounded-full p-2 hover:bg-tertiary text-xl'
+                        className='absolute right-1 rounded-full p-2 hover:bg-quaternary text-xl'
                         onClick={closeSideBar}><MdOutlineCancel /></button>
             </div>
             {links.map((item) => (
                 <div key={item.title}>
-                    <p className='text-gray-800 m-3 mt-4 uppercase font-osa'>
+                    <p className='m-3 mt-4 uppercase font-osa'>
                         {item.title}
                     </p>
                     {item.links.map((link) => (
-                        <a key={link.name} className={normalLink}>{link.icon} {link.name}</a>
+                        <a key={link.name} className={`${(window.location.href == window.location.origin+link.link) ? activeLink : normalLink}`}>{link.icon} {link.name}</a>
                     ))}
                 </div>
             ))
