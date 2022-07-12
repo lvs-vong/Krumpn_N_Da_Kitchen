@@ -13,6 +13,7 @@ module.exports = {
       },
       fontFamily: {
         osa: ['OSA'],
+        eightbit: ['EIGHTBIT'],
       },
       colors: {
         'main': '#77DD77',

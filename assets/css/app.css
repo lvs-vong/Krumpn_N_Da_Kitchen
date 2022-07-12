@@ -14,3 +14,8 @@
   font-family: 'OSA';
   src: url('/fonts/Old\ School\ Adventures-847a.woff');
 }
+
+@font-face {
+  font-family: 'EIGHTBIT';
+  src: url('/fonts/EightBitDragon-anqx.ttf');
+}
