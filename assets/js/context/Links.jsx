@@ -10,6 +10,7 @@ export const links = [
             {
                 name: 'Home',
                 icon: <MdOutlineHouse />,
+                link: '/home',
             },
         ],
     },
@@ -19,6 +20,7 @@ export const links = [
             {
                 name: 'Meat',
                 icon: <TbMeat />,
+                link: '/meat',
             },
         ],
     },
@@ -28,6 +30,7 @@ export const links = [
             {
                 name: 'Beer',
                 icon: <FaBeer />,
+                link: '/beer',
             },
         ],
     },
