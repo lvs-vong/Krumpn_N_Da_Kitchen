@@ -5,7 +5,7 @@ import { links } from '../context/Links';
 const Sidebar  = () => {
     const { sideMenu, setSideMenu } = useStateContext();
     const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-black text-md m-2';
-    const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-gray-700 text-md hover:bg-tertiary cursor-pointer';
+    const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-gray-700 text-md hover:bg-tertiary cursor-pointer font-eightbit';
     const closeSideBar = () => {
         setSideMenu(false);
     }
