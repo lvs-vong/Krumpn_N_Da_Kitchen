@@ -16,9 +16,10 @@ module.exports = {
         eightbit: ['EIGHTBIT'],
       },
       colors: {
-        'main': '#77DD77',
-        'secondary': '#ADAD89',
-        'tertiary': '#68EDCB',
+        'main': '#00215D',
+        'secondary': '#0A1836',
+        'tertiary': '#F1F7FC',
+        'quaternary': '#3BB7ED',
       },
     },
   },
