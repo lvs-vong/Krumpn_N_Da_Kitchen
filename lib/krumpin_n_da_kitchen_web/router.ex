@@ -16,8 +16,12 @@ defmodule KrumpinNDaKitchenWeb.Router do
 
   scope "/", KrumpinNDaKitchenWeb do
     pipe_through :browser
+    resources "/recipes", RecipeController
+    resources "/tags", TagController
+    resources "/ingredients", IngredientController
 
     get "/", PageController, :index
+    get "/home",PageController, :index
   end
 
   # Other scopes may use custom stacks.
