@@ -14,7 +14,7 @@ alias KrumpinNDaKitchen.Repo
 
 %KrumpinNDaKitchen.Recipes.Recipe{name: "Chicken Nuggets",
                             description: "Chicken nuggies for breakfast, I guess.",
-                            directions: ["1. step one goes here", "2. step 2 here", "3. lastly, step 3 heere"],
+                            directions: ["Put the pound of chicken in a bowl along with ground bread, 1 tb of garlic powder, cumin and mustard powder and pepper", "Mix it all together", "Oil up your hands and shape the nuggets", "Scramble some eggs and dip the nuggets and then dip them in panko", "Heat a small amount of oil to 300 degrees (monitor your oil temperature) and put the nuggets in with tongs.", "Flip them after a couple of minutes. Make sure they get to atleast 165 degrees F before you take them out.", "Enjoy!"],
                             prep_time: 5,
                             num_servings: 1,
                             num_calories: 500.0
