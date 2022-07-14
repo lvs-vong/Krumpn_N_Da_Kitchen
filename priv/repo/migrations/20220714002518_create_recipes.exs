@@ -4,11 +4,11 @@ defmodule KrumpinNDaKitchen.Repo.Migrations.CreateRecipes do
   def change do
     create table(:recipes) do
       add :name, :string
-      add :description, :string
+      add :description, :text
       add :prep_time, :integer
       add :num_servings, :integer
       add :num_calories, :float
-      add :directions, {:array, :string}
+      add :directions, {:array, :text}
 
       timestamps()
     end
