@@ -1,24 +1,3 @@
-// We import the CSS which is extracted to its own file by esbuild.
-
-
-// If you want to use Phoenix channels, run `mix help phx.gen.channel`
-// to get started and then uncomment the line below.
-// import "./user_socket.js"
-
-// You can include dependencies in two ways.
-//
-// The simplest option is to put them in assets/vendor and
-// import them using relative paths:
-//
-//     import "../vendor/some-package.js"
-//
-// Alternatively, you can `npm install some-package --prefix assets` and import
-// them using a path starting with the package name:
-//
-//     import "some-package"
-//
-
-// Include phoenix_html to handle method=PUT/DELETE in forms and buttons.
 import "phoenix_html"
 // Establish Phoenix Socket and LiveView configuration.
 import {Socket} from "phoenix"
@@ -42,15 +21,48 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
+// followed a tutorial for arrays in forms
+// link: youtube.com/watch?v=kg7q7O4RmQQ
+window.onload = () => {
+    eachSelected(".remove-array-item", (el) => el.onclick = removeItem);
+    eachSelected(".add-array-item", (el) => el.onclick = addItem);
+}
+const eachSelected = (selector, fn) => {
+    Array.prototype.forEach.call(document.querySelectorAll(selector), fn);
+}
+const removeItem = (event) => {
+    let index = event.target.dataset.index;
+    let li = event.target.parentNode;
+    let ol = li.parentNode;
+    ol.removeChild(li);
+    Array.prototype.forEach.call(ol.children, (x, i) => 
+    x.firstChild.dataset.index = i
+    );
+}
+const addItem = ({target: {dataset}}) => {
+    let container = document.getElementById(dataset.container);
+    let count = container.children.length;
+
+    container.insertAdjacentHTML("beforeend", dataset.blueprint);
+    let newItem = container.lastChild;
+    newItem.lastChild.onclick = removeItem;
+
+    newItem.firstChild.dataset.index = count;
+    newItem.firstChild.id += `_${count}`;
+    newItem.firstChild.focus();
+}
 
 //React stuff
 import React from "react";
 import ReactDOM from "react-dom/client";
 import AppContainer from "./components/AppContainer"
 import { ContextProvider } from "./context/ContextProvider"
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-    <ContextProvider>
-        <AppContainer />
-    </ContextProvider>
-);
+var rootExists = !!document.getElementById("root");
+if(rootExists){
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(
+        <ContextProvider>
+            <AppContainer />
+        </ContextProvider>
+    );
+}
