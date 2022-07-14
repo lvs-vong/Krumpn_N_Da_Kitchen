@@ -1,38 +1,31 @@
-<h1>Show Recipe</h1>
-
-<ul>
-
-  <li>
-    <strong>Name:</strong>
-    <%= @recipe.name %>
-  </li>
-
-  <li>
-    <strong>Description:</strong>
-    <%= @recipe.description %>
-  </li>
-
+<div class="absolute min-h-full w-screen text-tertiary sm:p-16 p-10 text-2xl
+            bg-gradient-to-b from-main via-secondary to-main">
+<h1 class="text-5xl underline pb-5"><%= @recipe.name %></h1>
+<ul class="flex sm:gap-32 gap-16 sm:text-xl text-sm pb-5">
   <li>
     <strong>Prep time:</strong>
-    <%= @recipe.prep_time %>
+    <%= to_string(@recipe.prep_time) <> " mins" %>
   </li>
-
   <li>
     <strong>Num servings:</strong>
     <%= @recipe.num_servings %>
   </li>
-
   <li>
     <strong>Num calories:</strong>
     <%= @recipe.num_calories %>
   </li>
-
-  <li>
-    <strong>Directions:</strong>
-    <%= @recipe.directions %>
-  </li>
-
 </ul>
-
+<strong>Description:</strong>
+<div class="sm:pl-36 sm:p-6">
+  <%= @recipe.description %>
+</div>
+<strong>Directions:</strong>
+<ol class="list-decimal list-outside sm:pl-36">
+    <%= for direction <- @recipe.directions do %>
+      <li class="pb-4 pt-2"><%= direction %></li>
+    <% end %>
+</ol>
 <span><%= link "Edit", to: Routes.recipe_path(@conn, :edit, @recipe) %></span> |
 <span><%= link "Back", to: Routes.recipe_path(@conn, :index) %></span>
+
+</div>
