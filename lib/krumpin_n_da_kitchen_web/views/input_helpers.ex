@@ -27,7 +27,7 @@ defmodule KrumpinNDaKitchenWeb.InputHelpers do
   end
 
   def create_li(form, field, input_opts \\ [], data \\ []) do
-    type = Phoenix.HTML.Form.input_type(form, field)
+    type = Phoenix.HTML.Form.input_type(form, field, %{"directions" => :textarea})
     name = Phoenix.HTML.Form.input_name(form, field) <> "[]"
     opts = Keyword.put_new(input_opts, :name, name)
     content_tag :li do
