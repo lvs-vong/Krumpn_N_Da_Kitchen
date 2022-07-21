@@ -59,4 +59,15 @@ defmodule KrumpinNDaKitchenWeb.RecipeController do
     |> put_flash(:info, "Recipe deleted successfully.")
     |> redirect(to: Routes.recipe_path(conn, :index))
   end
+
+  def jsonIndex(conn, _params) do
+    recipes = KrumpinNDaKitchen.Recipes.list_recipes()
+    render(conn, "index.json", recipes: recipes)
+  end
+
+  def jsonShow(conn, %{"id" => id}) do
+    {id, _} = Integer.parse(id)
+    recipe = KrumpinNDaKitchen.Recipes.get_recipe!(id)
+    render(conn, "show.json", recipe: recipe)
+  end
 end
