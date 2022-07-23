@@ -52,6 +52,7 @@ defmodule KrumpinNDaKitchen.Recipes do
   def create_recipe(attrs \\ %{}) do
     %Recipe{}
     |> Recipe.changeset(attrs)
+    |> maybe_put_tags(attrs)
     |> Repo.insert()
   end
 
@@ -101,4 +102,13 @@ defmodule KrumpinNDaKitchen.Recipes do
   def change_recipe(%Recipe{} = recipe, attrs \\ %{}) do
     Recipe.changeset(recipe, attrs)
   end
+
+  defp maybe_put_tags(changeset, []), do: changeset
+
+  defp maybe_put_tags(changeset, attrs) do
+    tags = KrumpinNDaKitchen.Categories.get_tags(attrs["tags"])
+
+    Ecto.Changeset.put_assoc(changeset, :tags, tags)
+  end
+  def load_tags(property), do: Repo.preload(property, :tags)
 end

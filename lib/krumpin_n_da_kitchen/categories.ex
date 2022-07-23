@@ -37,6 +37,12 @@ defmodule KrumpinNDaKitchen.Categories do
   """
   def get_tag!(id), do: Repo.get!(Tag, id)
 
+  def get_tags(nil), do: []
+
+  def get_tags(ids) do
+    Repo.all(from a in KrumpinNDaKitchen.Categories.Tag, where: a.id in ^ids)
+  end
+
   @doc """
   Creates a tag.
 
