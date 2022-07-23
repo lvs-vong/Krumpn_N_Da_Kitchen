@@ -15,6 +15,9 @@
     <%= @recipe.num_calories %>
   </li>
 </ul>
+<%= for tag <- @recipe.tags do %>
+  <p><%= tag.name %> </p>
+<% end %>
 <strong>Description:</strong>
 <div class="sm:pl-36 sm:p-6">
   <%= @recipe.description %>

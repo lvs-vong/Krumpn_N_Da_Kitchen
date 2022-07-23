@@ -4,33 +4,54 @@
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
-
-  <%= label f, :name %>
-  <%= text_input f, :name %>
-  <%= error_tag f, :name %>
-
-  <%= label f, :description %>
-  <%= text_input f, :description %>
-  <%= error_tag f, :description %>
-
-  <%= label f, :prep_time %>
+<div class="absolute min-h-full w-screen p-16 text-2xl
+            bg-gradient-to-b from-main via-secondary to-main">
+  <div>
+    <%= label f, :name, class: "text-tertiary p-4" %>
+    <%= text_input f, :name %>
+    <%= error_tag f, :name %>
+  </div>
+ 
+  <%= label f, :prep_time, class: "text-tertiary p-4" %>
   <%= number_input f, :prep_time %>
   <%= error_tag f, :prep_time %>
 
-  <%= label f, :num_servings %>
+  <%= label f, :num_servings, class: "text-tertiary p-4" %>
   <%= number_input f, :num_servings %>
   <%= error_tag f, :num_servings %>
 
-  <%= label f, :num_calories %>
+  <%= label f, :num_calories, class: "text-tertiary p-4" %>
   <%= number_input f, :num_calories, step: "any" %>
   <%= error_tag f, :num_calories %>
 
-  <%= label f, :directions %>
-  <%= array_input f, :directions %>
-  <%= array_add_button f, :directions %>
-  <%= error_tag f, :directions %>
-
+  <div class="form-group">
+    <%=
+      #IO.inspect(@changeset.data)
+      multiselect_checkboxes(
+        f, 
+        :tags, 
+        Enum.map(@tags, fn a -> { a.name, a.id } end),
+      selected: Enum.map(@changeset.data.tags,&{&1.id})
+      )
+    %>
+  </div>
   <div>
+    <%= label f, :description, class: "text-tertiary p-4" %>
+    <div>
+      <%= textarea f, :description, class: "w-1/2 h-36" %>
+    </div>
+    <%= error_tag f, :description %>
+  </div>
+  <div class="w-full">
+    <%= label f, :directions, class: "text-tertiary p-4" %>
+    <div>
+      <%= array_input f, :directions%>
+    </div>
+    <%= array_add_button f, :directions %>
+    <%= error_tag f, :directions %>
+  </div>
+  <div class="text-tertiary">
     <%= submit "Save" %>
   </div>
+</div>
 </.form>
