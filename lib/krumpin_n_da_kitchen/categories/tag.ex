@@ -5,6 +5,8 @@ defmodule KrumpinNDaKitchen.Categories.Tag do
   schema "tags" do
     field :name, :string
 
+    many_to_many :recipes, KrumpinNDaKitchen.Recipes.Recipe,
+      join_through: KrumpinNDaKitchen.RecipesTags
     timestamps()
   end
 

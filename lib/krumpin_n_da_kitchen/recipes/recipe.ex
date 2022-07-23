@@ -10,6 +10,8 @@ defmodule KrumpinNDaKitchen.Recipes.Recipe do
     field :num_servings, :integer
     field :prep_time, :integer
 
+    many_to_many :tags, KrumpinNDaKitchen.Categories.Tag,
+      join_through: KrumpinNDaKitchen.RecipesTags
     timestamps()
   end
 
