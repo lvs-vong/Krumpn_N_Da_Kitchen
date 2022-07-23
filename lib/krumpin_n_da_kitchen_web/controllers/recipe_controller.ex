@@ -10,8 +10,14 @@ defmodule KrumpinNDaKitchenWeb.RecipeController do
   end
 
   def new(conn, _params) do
-    changeset = Recipes.change_recipe(%Recipe{})
-    render(conn, "new.html", changeset: changeset)
+    preloads = [:tags]
+    recipe = %Recipe{} |> KrumpinNDaKitchen.Repo.preload(preloads)
+    changeset = Recipes.change_recipe(recipe)
+    IO.inspect(changeset.data.tags)
+
+    tags = KrumpinNDaKitchen.Categories.list_tags()
+
+    render(conn, "new.html", changeset: changeset, tags: tags)
   end
 
   def create(conn, %{"recipe" => recipe_params}) do
@@ -21,13 +27,21 @@ defmodule KrumpinNDaKitchenWeb.RecipeController do
         |> put_flash(:info, "Recipe created successfully.")
         |> redirect(to: Routes.recipe_path(conn, :show, recipe))
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+      {:error, changeset} ->
+        data = Recipes.load_tags(changeset.data)
+        tags = KrumpinNDaKitchen.Categories.list_tags()
+
+        conn
+        |> put_flash(:error, "Error!")
+        |> render("new.html", %{changeset | data: data}, tags)
     end
   end
 
   def show(conn, %{"id" => id}) do
+    preloads = [:tags]
     recipe = Recipes.get_recipe!(id)
+      |>  KrumpinNDaKitchen.Repo.preload(preloads)
+    IO.inspect(recipe)
     render(conn, "show.html", recipe: recipe)
   end
 
