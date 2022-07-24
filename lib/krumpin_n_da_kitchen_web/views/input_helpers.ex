@@ -9,7 +9,7 @@ defmodule KrumpinNDaKitchenWeb.InputHelpers do
       blueprint: create_li(form, field, [value: ""]) |> safe_to_string,
       container: id
     ]
-    link("Add", to: "#", data: data, title: "add", class: "add-array-item")
+    link("Add", to: "#", data: data, title: "add", class: "add-array-item text-tertiary")
   end
 
   def array_input(form, field) do
@@ -33,7 +33,7 @@ defmodule KrumpinNDaKitchenWeb.InputHelpers do
     content_tag :li do
       [
         apply(Phoenix.HTML.Form, type, [form, field, opts]),
-        link("Remove", to: "#", data: data, title: "Remove", class: "remove-array-item")
+        link("Remove", to: "#", data: data, title: "Remove", class: "remove-array-item text-tertiary")
       ]
     end
   end

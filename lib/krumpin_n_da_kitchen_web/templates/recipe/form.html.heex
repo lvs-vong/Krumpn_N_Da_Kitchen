@@ -26,7 +26,8 @@
 
   <div class="form-group">
     <%=
-      #IO.inspect(@changeset.data)
+      IO.inspect("test")
+      Enum.map(@tags, fn a -> IO.inspect(a) end)
       multiselect_checkboxes(
         f, 
         :tags, 

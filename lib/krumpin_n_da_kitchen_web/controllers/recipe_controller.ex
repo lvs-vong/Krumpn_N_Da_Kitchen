@@ -13,7 +13,7 @@ defmodule KrumpinNDaKitchenWeb.RecipeController do
     preloads = [:tags]
     recipe = %Recipe{} |> KrumpinNDaKitchen.Repo.preload(preloads)
     changeset = Recipes.change_recipe(recipe)
-    IO.inspect(changeset.data.tags)
+    #IO.inspect(changeset.data.tags)
 
     tags = KrumpinNDaKitchen.Categories.list_tags()
 
@@ -41,14 +41,17 @@ defmodule KrumpinNDaKitchenWeb.RecipeController do
     preloads = [:tags]
     recipe = Recipes.get_recipe!(id)
       |>  KrumpinNDaKitchen.Repo.preload(preloads)
-    IO.inspect(recipe)
+    #IO.inspect(recipe)
     render(conn, "show.html", recipe: recipe)
   end
 
   def edit(conn, %{"id" => id}) do
+    preloads = [:tags]
+    tags = KrumpinNDaKitchen.Categories.list_tags()
     recipe = Recipes.get_recipe!(id)
+      |> KrumpinNDaKitchen.Repo.preload(preloads)
     changeset = Recipes.change_recipe(recipe)
-    render(conn, "edit.html", recipe: recipe, changeset: changeset)
+    render(conn, "edit.html", recipe: recipe, changeset: changeset, tags: tags)
   end
 
   def update(conn, %{"id" => id, "recipe" => recipe_params}) do

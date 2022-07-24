@@ -4,11 +4,9 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Description</th>
       <th>Prep time</th>
       <th>Num servings</th>
       <th>Num calories</th>
-      <th>Directions</th>
 
       <th></th>
     </tr>
@@ -17,11 +15,9 @@
 <%= for recipe <- @recipes do %>
     <tr>
       <td><%= recipe.name %></td>
-      <td><%= recipe.description %></td>
       <td><%= recipe.prep_time %></td>
       <td><%= recipe.num_servings %></td>
       <td><%= recipe.num_calories %></td>
-      <td><%= recipe.directions %></td>
 
       <td>
         <span><%= link "Show", to: Routes.recipe_path(@conn, :show, recipe) %></span>
